@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+bool a[20001][20001] = {0};
+int b[501][2];
+int n,m,k;
+
+void clear(int x, int y);
+
+int main()
+{
+
+cin >> n >> m >> k;
+for(int t = 0; t < k; t++)
+{
+    cin >> b[t][0] >> b[t][1];
+    clear(b[t][0],b[t][1]);
+
+}
+int count = 0;
+for(int u = 1; u <= n; u++)
+{
+    for(int y = 1; y <= m; y++)
+    {
+        if(a[u][y] == 0)
+        count++;
+    }
+}
+cout << count <<endl;
+return 0;
+
+}
+
+void clear(int x, int y)
+{
+    int q = x+y;
+    int r = x-y+n-1;
+    for(int w = 1; w <= n; w++)
+    {
+        a[x][w] = 1;
+    }
+    for(int w = 1; w <= m; w++)
+    {
+        a[m][y] = 1;
+    }
+
+    for(int u = 1; u <= n; u++)
+    {
+        a[u][q-u] = 1;
+        a[u][x-r+n-1] = 1;
+    }
+
+}

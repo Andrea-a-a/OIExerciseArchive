@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+void number(int n);
+int main(void)
+{
+    int n;
+    cin >> n;
+
+    
+    number(n);
+    number(85);
+
+
+}
+
+void number(int n)
+{
+
+    //这是有w+1位数
+    int w;
+    int m = n;
+    for(int i = 0; i < 7; i++)
+    {
+        int chengfang = pow(10,i);
+        if( m/chengfang == 0 && w == 0)
+        {
+            w = i;
+            //cout<< "w:" << w << endl;
+        }
+    }
+    // o is the first character
+    int o = n / pow(10, w-1) ;     
+    cout << o <<endl<<w<<endl ;
+
+    
+        //temp = n + (p+1)*pow(10, w);
+        //cout<< p<<"n:" << temp << endl;
+    int a;
+    for(int p = 0; p < o/2; p++)
+    {
+        a = n + (p+1)*pow(10, w);
+        cout<<a<<"p:"<<p<<endl;
+        
+
+        
+    }
+    
+}
+

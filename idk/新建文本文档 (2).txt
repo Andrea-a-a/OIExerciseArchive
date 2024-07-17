@@ -1,0 +1,71 @@
+#include <iostream>
+
+using namespace std;
+
+int a[100001];
+int r[100001];
+int c;
+void bsort(int a, int b);
+int main()
+{
+int n;
+cin>> n;
+
+for(int i = 0; i < n; i++)
+cin>>a[i];
+
+bsort(0,n);
+
+
+cout<<c;
+}
+
+
+void bsort(int s, int t)
+{
+    if(s==t)
+    return;
+
+    int mid = (s+t)/2;
+
+    bsort(s,mid);
+    bsort(mid+1, t);
+
+    int i = s, j = mid+1, k =s;
+
+    while(i<=mid&&j<=t)
+    {
+        if(a[i]<=a[j])
+        {
+        r[k]=a[i];
+        k++;i++;
+        }
+        else
+        {
+            r[k] = a[j];
+            k++;
+            j++;
+
+            c += mid-i+1;
+        }
+    }
+
+    while(i<=mid)
+    {
+        r[k]=a[i];
+        k++;
+        i++;
+    }
+    while(j<=s )
+    {
+        r[k]=a[j];
+        k++;
+        j++;
+    }
+    for(int i = s; i<=t; i++)
+    a[i] = r[i];
+}
+
+
+
+
